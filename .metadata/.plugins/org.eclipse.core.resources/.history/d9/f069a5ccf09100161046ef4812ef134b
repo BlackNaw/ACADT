@@ -1,0 +1,73 @@
+package baseDatos;
+
+import java.beans.Statement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.naming.spi.DirStateFactory.Result;
+
+public class AccesoBD {
+	private static AccesoBD miConexion = null;
+	private Connection conexion = null;
+
+	private String driver = null; /* Driver de conexion */
+	private String dbName = null; /* Nombre de la base de datos */
+	private String user = null; /* Usuario que se conecta a la BBDD */
+	private String password = null; /* Contraseña del usuario */
+
+	synchronized public static AccesoBD getMiConexion() {
+		if (miConexion == null)
+			miConexion = new AccesoBD();
+		return miConexion;
+	}
+
+	/**
+	 * Abre la conexion con la base de datos
+	 * @param driver tipo de conexion
+	 * @param dbName nombre de la base de datos
+	 * @param user usuario que quiere conectar
+	 * @param password contraseña del usuario
+	 * 
+	 * Errores que lanza
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException
+	 */
+	synchronized public void conectar(String driver, String dbName, String user, String password)
+			throws SQLException, ClassNotFoundException {
+		if (conexion != null)
+			if (!this.driver.equals(driver) || (!this.dbName.equals(dbName))
+					|| (this.user != null && !this.user.equals(user))
+					|| (this.password != null && !this.password.equals(password))) {
+				conexion.close();
+			}else return;
+		
+		//Conexion Nueva
+		//Cargar el driver
+		Class.forName(driver);
+		
+		if(user==null||password==null) conexion =(Connection) DriverManager.getConnection(dbName);
+		else conexion =(Connection)DriverManager.getConnection(dbName,user,password);
+		System.out.println("Conectar a BD "+ dbName);
+		this.driver=driver;
+		this.dbName=dbName;
+		this.user=user;
+		this.password=password;
+		
+	}
+	
+	/**
+	 * Cierra la conexion con la base de datos y lanza os siguiente errrores 
+	 * @throws SQLException
+	 */
+	synchronized public void cerrar() throws SQLException{
+		if (conexion!=null) conexion.close();
+	}
+
+	synchronized public ResultSet executeQuery(String sqlSentence) throws SQLException{
+		if(conexion==null)return null;
+		Statement sentence=(Statement)conexion.createStatement();
+		return sentence.executeQuery(sqlSentence);
+	}
+}

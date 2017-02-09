@@ -1,0 +1,30 @@
+package baseDatos;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+public class AccesoBD {
+	private static AccesoBD miConexion = null;
+	private Connection conexion = null;
+
+	private String driver = null; /* Driver de conexion */
+	private String dbName = null; /* Nombre de la base de datos */
+	private String user = null; /* Usuario que se conecta a la BBDD */
+	private String password = null; /* Contraseña del usuario */
+
+	synchronized public static AccesoBD getMiConexion() {
+		if (miConexion == null)
+			miConexion = new AccesoBD();
+		return miConexion;
+	}
+
+	synchronized public void conectar(String driver, String dbName, String user, String password)
+			throws SQLException, ClassNotFoundException {
+		if (conexion != null)
+			if (!this.driver.equals(driver) || (!this.dbName.equals(dbName))
+					|| (this.user != null && !this.user.equals(user))
+					|| (this.password != null && !this.password.equals(password))) {
+
+			}
+	}
+}

@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="FinalFrutas2017b:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/FinalFrutas2017b_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="FinalFrutas2017b/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="FinalFrutas2017b" />
+        </element>
+        <element id="directory" name="lib" />
+      </element>
+    </root>
+  </artifact>
+</component>

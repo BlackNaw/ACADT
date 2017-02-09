@@ -1,0 +1,13 @@
+package baseDatos;
+
+import java.sql.Connection;
+
+public class AccesoBD {
+	private static AccesoBD miConexion=null;
+	private Connection conexion=null;
+	private String driver=null;
+	private String dbName=null;
+	private String user=null;
+	private String password=null;
+
+}

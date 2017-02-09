@@ -1,0 +1,18 @@
+package baseDatos;
+
+import java.sql.Connection;
+
+public class AccesoBD {
+	private static AccesoBD miConexion = null;
+	private Connection conexion = null;
+
+	private String driver = null; /* Driver de conexion */
+	private String dbName = null; /* Nombre de la base de datos */
+	private String user = null; /* Usuario que se conecta a la BBDD */
+	private String password = null; /* Contraseña del usuario */
+
+	synchronized public static AccesoBD getMiConexion() {
+		if(miConexion==null) return miConexion=new AccesoBD();
+		return null;
+	}
+}

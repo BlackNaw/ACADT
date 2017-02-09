@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1474019619734_1" label="JavaBiblia" name="JavaBiblia">
+<item elementID="=Tema02" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1476432746164_2" label="BaseDatos" name="BaseDatos">
+<item elementID="=Frutas201617" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1474019587184_0" label="Window Working Set" name="Aggregate for window 1474019587184"/>
+<mruList name="BaseDatos"/>
+<mruList name="JavaBiblia"/>
+</workingSetManager>
