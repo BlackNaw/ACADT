@@ -30,8 +30,8 @@
 
     if (session.getAttribute("idSesion") == session.getId()) {
       ControladorServidor c;
-      c = new ControladorServidor((String) session.getAttribute("pagina"));
-      paginaResultado = c.elegirArmador(session);
+      c = new ControladorServidor(session);
+      paginaResultado = c.elegirArmador();
     }
 
 %>

@@ -6,6 +6,6 @@ package pagina;
 import java.sql.SQLException;
 
 public interface IPagina {
-    public void getHead() throws SQLException;
-    // public void getBody() throws SQLException;
+    void getHead() throws SQLException;
+    void getBody() throws SQLException;
 }

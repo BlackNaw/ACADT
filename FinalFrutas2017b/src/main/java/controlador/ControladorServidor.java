@@ -20,13 +20,12 @@ public class ControladorServidor {
         this.idioma = (String) session.getAttribute("idioma");
     }
 
-    public String elegirArmador(HttpSession session) throws ClassNotFoundException, SQLException {
+    public String elegirArmador() throws ClassNotFoundException, SQLException {
 
 
         if (this.pagina.equals("index")) {
             AArmador miArmador = new Armador1();
-            link = new Pagina(pagina, idioma, miArmador,
-                    "jdbc:mysql://localhost/pagina2017", "root", "").getPagina();
+            link = new Pagina(this.pagina, this.idioma, miArmador,"jdbc:mysql://localhost/pagina2017b", "root", "").getPagina();
         }
 
 
