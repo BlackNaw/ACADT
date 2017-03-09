@@ -5,29 +5,31 @@ import pagina.AArmador;
 import pagina.Armador1;
 import pagina.Pagina;
 
-import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 
 public class ControladorServidor {
 
     private String pagina = "";
-    private String link = "hola";
     private String idioma = "";
+    private String link = "";
+    private String usuario="";
+    public ControladorServidor(String pagina, String idioma,String usuario) {
 
+        this.pagina = pagina;    // index primera vez
+        this.idioma = idioma;  // es primera vez
+        this.usuario = usuario;
 
-    public ControladorServidor(HttpSession session) {
-        this.pagina = (String) session.getAttribute("pagina");    // index primera vez
-        this.idioma = (String) session.getAttribute("idioma");
     }
 
     public String elegirArmador() throws ClassNotFoundException, SQLException {
-
-
-        if (this.pagina.equals("index")) {
-            AArmador miArmador = new Armador1();
-            link = new Pagina(this.pagina, this.idioma, miArmador,"jdbc:mysql://localhost/pagina2017b", "root", "").getPagina();
+        String bd="jdbc:mysql://localhost/pagina2017b";
+        String password="";
+        if(!usuario.equals("root")){
+            bd=bd+"?useInformationSchema=true";
+            password=usuario;
         }
-
+        AArmador miArmador = new Armador1();
+        link = new Pagina(this.pagina, this.idioma, miArmador, bd, this.usuario, password).getPagina();
 
         return link;
     }

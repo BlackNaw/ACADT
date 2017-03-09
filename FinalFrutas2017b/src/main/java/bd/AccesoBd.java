@@ -66,10 +66,11 @@ public class AccesoBd {
 	
 	synchronized public int executeUpdate(String sqlSentence) throws SQLException{
 		if(conexion == null) return -1;
-		Statement sentence = (Statement) conexion.createStatement();		
+		Statement sentence = (Statement) conexion.createStatement();
 		return sentence.executeUpdate(sqlSentence);
 	}
-	public Connection getConexion() {
-		return conexion;
-	}
+	 public Connection getConexion(){
+		 return this.conexion;
+
+	 }
 }

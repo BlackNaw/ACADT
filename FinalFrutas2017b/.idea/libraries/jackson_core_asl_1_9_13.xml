@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="jackson-core-asl-1.9.13">
+    <CLASSES>
+      <root url="jar://C:/xampp/apache-tomcat-9.0.0.M1/lib/jackson-mapper-asl-1.9.13.jar!/" />
+      <root url="jar://C:/xampp/apache-tomcat-9.0.0.M1/lib/jackson-core-asl-1.9.13.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

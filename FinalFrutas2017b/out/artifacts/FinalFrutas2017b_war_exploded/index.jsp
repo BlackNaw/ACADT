@@ -9,35 +9,25 @@
          pageEncoding="ISO-8859-1"%>
 
 <%@page import="controlador.ControladorServidor"%>
-<%@ page import="java.awt.*" %>
-<%@ page import="java.util.Enumeration" %>
-
-
 <%
+  String paginaResultado="";
 
+  if(session.getAttribute("pagina") == null){
 
+    session = request.getSession();
+    session.setAttribute("pagina", "index");
+    session.setAttribute("idioma", request.getLocale().getLanguage());
+    session.setAttribute("idSesion", session.getId());
+    session.setAttribute("usuario","root");
+  }
 
-    String paginaResultado = "";
-
-
-    if (session.getAttribute("pagina") == null) {
-
-      session = request.getSession();
-      session.setAttribute("pagina", "index");
-      session.setAttribute("idioma", request.getLocale().getLanguage());
-      session.setAttribute("idSesion", session.getId());
-    }
-
-    if (session.getAttribute("idSesion") == session.getId()) {
-      ControladorServidor c;
-      c = new ControladorServidor(session);
-      paginaResultado = c.elegirArmador();
-    }
-
+  if(session.getAttribute("idSesion") == session.getId())
+  {
+    ControladorServidor c;
+    c = new ControladorServidor((String) session.getAttribute("pagina"), (String) session.getAttribute("idioma"),(String) session.getAttribute("usuario"));
+    paginaResultado = c.elegirArmador();
+  }
 %>
 <%=paginaResultado%>
-
-
-
 
 

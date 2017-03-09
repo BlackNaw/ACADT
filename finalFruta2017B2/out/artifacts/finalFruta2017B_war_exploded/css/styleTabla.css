@@ -1,0 +1,209 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-color: azure;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-family: sans-serif;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+input {
+    width: 50%;
+}
+
+.table-users {
+    border: 1px solid darkturquoise;
+    border-radius: 6px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    margin: 1em;
+    max-width: 100%;
+    overflow: hidden;
+    width: 80%;
+}
+
+.table-users .table-row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding-top: 5px;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
+.table-users .table-row div {
+    box-sizing: border-box;
+}
+
+.table-users .table-row.header {
+    background-color: darkturquoise;
+    color: white;
+    font-size: 1.3em;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding: .5em;
+}
+
+.table-users .table-row.item {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-color: white;
+}
+
+.table-users .table-row.item:not(:last-child) {
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.table-users .table-row.item > div:first-child {
+    -webkit-box-flex: 0;
+    -ms-flex: 0;
+    flex: 0;
+    -ms-flex-preferred-size: 100px;
+    flex-basis: 100px;
+    padding: .5em;
+}
+
+.table-users .table-row.item .info {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
+.table-users .table-row.item .info div {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    text-align: center;
+}
+
+.table-users .table-row.names div {
+    /*background-color: #f1f1f1;*/
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    padding: .5em;
+    text-align: center;
+    margin-right: 50px
+}
+
+.table-users .table-row.names div:first-child {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -ms-flex-preferred-size: 100px;
+    flex-basis: 55px;
+}
+
+.table-users .table-row img {
+    border-radius: 50%;
+    max-width: 100%;
+}
+
+@media screen and (max-width: 580px) {
+    .table-users .table-row.item .info {
+        -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+        align-items: stretch;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+
+    .table-users .table-row.item .info div {
+        padding: .3em;
+        text-align: left;
+    }
+
+    .table-users .table-row.item .info div:before {
+        /*color: gray;*/
+        display: inline-block;
+        width: 60px;
+    }
+
+    .table-users .table-row.item .info div:nth-child(1):before {
+        content: 'Almacen:';
+    }
+
+    .table-users .table-row.item .info div:nth-child(2):before {
+        content: 'Variedad:';
+    }
+
+    .table-users .table-row.item .info div:nth-child(3):before {
+        content: 'Medida:';
+    }
+
+    .table-users .table-row.item .info div:nth-child(4):before {
+        content: 'Precio:';
+    }
+
+    .table-users .table-row.item .info div:nth-child(5):before {
+        content: 'Stock:';
+    }
+    .table-users .table-row.item .info div:nth-child(6):before {
+        content: 'Cantidad:';
+    }
+
+    .table-users .table-row.names {
+        display: none;
+    }
+}
+
+a {
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+@media screen and (max-width: 400px) {
+    .table-users .table-row {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        padding-bottom: 1em;
+    }
+
+    .table-users .table-row.item div:first-child {
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+    }
+
+    .table-users .table-row.header {
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+}
