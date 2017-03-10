@@ -10,7 +10,6 @@
 
 <%@page import="controlador.ControladorServidor" %>
 
-
 <%
     String paginaResultado = "";
 

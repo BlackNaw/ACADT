@@ -270,6 +270,7 @@ button,
 select {
     /* 1 */
     text-transform: none;
+    margin-left: 50%;
 }
 
 /**
@@ -919,6 +920,13 @@ h1 {
         animation-name: animacion;
         animation-fill-mode: forwards;
         /* this prevents the animation from restarting! */
+    }
+
+    .seleccionCarr{
+        width: 100%;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
     }
 
     @-webkit-keyframes animacion {

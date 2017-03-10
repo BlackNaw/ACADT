@@ -3,10 +3,8 @@ package servlet;
 import bd.AccesoBd;
 import controlador.ControladorCliente;
 import dao.Cliente;
-import dao.DatosAlmacen;
 import dao.Fruta;
 import org.codehaus.jackson.JsonGenerationException;
-import org.codehaus.jackson.JsonGenerator;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.json.simple.JSONObject;
@@ -19,8 +17,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.InterruptedIOException;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -37,15 +33,12 @@ public class Servlet extends HttpServlet {
     private Object obj = null;
     private Cliente cliente;
     private ControladorCliente controladorCliente;
-    private ObjectMapper mapperObj;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         json = new String(request.getParameter("json").getBytes(), "UTF-8");
         parser = new JSONParser();
-        mapperObj= new ObjectMapper();
-        mapperObj.configure(JsonGenerator.Feature.ESCAPE_NON_ASCII,true);
-        response.setCharacterEncoding( "UTF-8" );
+
         try {
             obj = parser.parse(json);
             jsonObject = (JSONObject) obj;
@@ -63,49 +56,12 @@ public class Servlet extends HttpServlet {
             login(request);
         } else if (accion.equals("registro")) {
             registrar();
-        }if(accion.equals("rellenar"))
-            rellenar(response);
+        }
         response.setHeader("mensaje", mensaje);
     }
 
-    private void rellenar(HttpServletResponse response) {
-        int idFruta=Integer.valueOf((String)jsonObject.get("fruta"));
-        AccesoBd acceso=new AccesoBd();
-        ArrayList<DatosAlmacen> datos=new ArrayList<DatosAlmacen>();
-        try {
-            acceso.conectar("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/frutas2016", "cliente", "cliente");
-            ResultSet rs = acceso.executeQuery("SELECT f.nombreFruta AS fruta, v.nombreVariedad AS variedad , " +
-                    "a.nombreAlmacen AS almacen, m.nombreMedida AS medida , d.stock_distribucion AS stock , " +
-                    "d.precio_distribucion AS precio FROM `distribucion` d, almacen a, variedad v, medida m, fruta f " +
-                    "WHERE v.codFruta = f.codFruta AND a.codAlmacen = d.codAlmacen AND m.codMedida = d.codMedida " +
-                    "AND d.codVariedad = v.codVariedad AND f.codFruta = "+idFruta);
-            while (rs.next()){
-                datos.add(new DatosAlmacen(rs.getString("fruta"), rs.getString("variedad"),
-                        rs.getString("almacen"), rs.getString("medida"), rs.getInt("stock")
-                        ,rs.getFloat("precio")));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        if (datos.size() > 0){
-            String jsonStr = null;
-            try {
-
-                jsonStr = mapperObj.writeValueAsString(datos);
-                mensaje = jsonStr;
-
-                response.getWriter().write(mensaje);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-    }
-
     private void login(HttpServletRequest request) {
+        ObjectMapper mapperObj = new ObjectMapper();
         try {
             Cliente cliente = controladorCliente.loguearCliente((String) jsonObject.get("usuario"), (String) jsonObject.get("password"));
             if (cliente != null ) {
