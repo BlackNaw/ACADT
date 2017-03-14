@@ -33,7 +33,7 @@ public class AlmacenStock {
     public static ArrayList<AlmacenStock> obtenerAlmacenesStock(int codFruta) throws SQLException, ClassNotFoundException {
         conectar();
         ArrayList<AlmacenStock> almacenStocks = new ArrayList<AlmacenStock>();
-        ResultSet rs = acceso.executeQuery("SELECT d.`IdDistribucion` AS idDistribucion,v.nombreVariedad AS variedad , " +
+        ResultSet rs = acceso.executeQuery("SELECT d.`idDistribucion` AS idDistribucion,v.nombreVariedad AS variedad , " +
                 "a.nombreAlmacen AS almacen, m.nombreMedida AS medida , d.stock_distribucion AS stock , " +
                 "d.precio_distribucion AS precio FROM `distribucion` d, almacen a, variedad v, medida m, fruta f " +
                 "WHERE v.codFruta = f.codFruta AND a.codAlmacen = d.codAlmacen AND m.codMedida = d.codMedida " +
@@ -48,6 +48,14 @@ public class AlmacenStock {
 
     private static void conectar() throws SQLException, ClassNotFoundException {
         acceso.conectar("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/pagina2017b", "cliente", "cliente");
+    }
+
+    public int getIdDistribucion() {
+        return idDistribucion;
+    }
+
+    public void setIdDistribucion(int idDistribucion) {
+        this.idDistribucion = idDistribucion;
     }
 
     public String getNombreVariedad() {
@@ -88,13 +96,5 @@ public class AlmacenStock {
 
     public void setPrecio(float precio) {
         this.precio = precio;
-    }
-
-    public int getIdDistribucion() {
-        return idDistribucion;
-    }
-
-    public void setIdDistribucion(int idDistribucion) {
-        this.idDistribucion = idDistribucion;
     }
 }

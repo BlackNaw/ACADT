@@ -1,27 +1,5 @@
-/*html, body {*/
-    /*height: 100%;*/
-/*}*/
-
-/*body {*/
-    /*-webkit-box-align: center;*/
-    /*-ms-flex-align: center;*/
-    /*align-items: center;*/
-    /*background-color: azure;*/
-    /*display: -webkit-box;*/
-    /*display: -ms-flexbox;*/
-    /*display: flex;*/
-    /*font-family: sans-serif;*/
-    /*-webkit-box-pack: center;*/
-    /*-ms-flex-pack: center;*/
-    /*justify-content: center;*/
-/*}*/
-
-input {
-    width: 50%;
-}
-
 .table-users {
-    border: 1px solid darkturquoise;
+    border: 3px solid darkturquoise;
     border-radius: 6px;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -34,6 +12,11 @@ input {
     max-width: 100%;
     overflow: hidden;
     width: 100%;
+}
+
+.info{
+    display: flex;
+    justify-content: space-around;
 }
 
 .table-users .table-row {
@@ -72,20 +55,21 @@ input {
 }
 
 .table-users .table-row.item:not(:last-child) {
-    border-bottom: 1px solid #f1f1f1;
+    border: 3px solid darkturquoise;
 }
 
 .table-users .table-row.item > div:first-child {
     -webkit-box-flex: 0;
     -ms-flex: 0;
-    flex: 0;
+    flex: 1;
     -ms-flex-preferred-size: 100px;
     flex-basis: 100px;
     padding: .5em;
 }
 
 .table-users .table-row.item .info {
-    margin:10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
@@ -102,6 +86,7 @@ input {
 }
 
 .table-users .table-row.item .info div {
+    margin-left: 5px;
     -webkit-box-flex: 1;
     -ms-flex: 1;
     flex: 1;
@@ -119,7 +104,6 @@ input {
 }
 
 .table-users .table-row.names div:first-child {
-    margin-left: 5%;
     -webkit-box-flex: 1;
     -ms-flex: 1;
     flex: 1;
@@ -132,7 +116,36 @@ input {
     max-width: 100%;
 }
 
-@media screen and (max-width: 580px) {
+.borrarSpan {
+    padding-left: 10px;
+}
+
+.borrarImg {
+    width: 13px;
+    height: 13px;
+}
+
+#filaTotal {
+    background-color: darkturquoise;
+    color: white;
+}
+
+#filaBoton {
+    background-color: darkturquoise;
+}
+
+@media screen and (max-width: 900px) {
+    html, body {
+        font-size: 13px;
+    }
+
+    /*display: flex;*/
+    /*flex-flow: row nowrap;*/
+    /*justify-content: space-around;*/
+
+    .table-row{
+        margin-bottom: 10px;
+    }
     .table-users .table-row.item .info {
         -webkit-box-align: stretch;
         -ms-flex-align: stretch;
@@ -144,50 +157,63 @@ input {
     }
 
     .table-users .table-row.item .info div {
-        padding: .3em;
+        padding: 1.3em;
         text-align: left;
     }
 
     .table-users .table-row.item .info div:before {
         /*color: gray;*/
         display: inline-block;
-        width: 60px;
-    }
-
-    .table-users .table-row.item .info div:nth-child(1):before {
-        content: 'Almacen:';
+        width: 50%;
     }
 
     .table-users .table-row.item .info div:nth-child(2):before {
-        content: 'Variedad:';
+        content: 'Almacen:';
     }
 
     .table-users .table-row.item .info div:nth-child(3):before {
-        content: 'Medida:';
+        content: 'Variedad:';
     }
 
     .table-users .table-row.item .info div:nth-child(4):before {
-        content: 'Precio:';
+        content: 'Medida:';
     }
 
     .table-users .table-row.item .info div:nth-child(5):before {
+        content: 'Precio:';
+    }
+
+    .table-users .table-row.item .info div:nth-child(6):before {
         content: 'Stock:';
     }
-    .table-users .table-row.item .info div:nth-child(6):before {
+
+    .table-users .table-row.item .info div:nth-child(7):before {
         content: 'Cantidad:';
+    }
+
+    .table-users .table-row.item .info div:nth-child(8):before {
+        content: 'Subtotal:';
     }
 
     .table-users .table-row.names {
         display: none;
     }
+    .table-users{
+        border: none;
+    }
 }
 
 a {
-    margin-left: 5px;
+    margin-left: 2px;
+    margin-right: 5px;
     margin-bottom: 5px;
 }
 
 @media screen and (max-width: 400px) {
+    html, body {
+        font-size: 10px;
+    }
+
     .table-users .table-row {
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
@@ -199,12 +225,42 @@ a {
     .table-users .table-row.item div:first-child {
         -webkit-box-flex: 1;
         -ms-flex: 1;
+        font-size: 0.5em;
         flex: 1;
     }
 
     .table-users .table-row.header {
+        font-size: 0.5em;
         -webkit-box-align: center;
         -ms-flex-align: center;
         align-items: center;
     }
+}
+
+.animate {
+    transition: all 0.1s;
+    -webkit-transition: all 0.1s;
+}
+
+.action-button {
+    padding: 10px 40px;
+    margin: auto;
+    float: left;
+    border-radius: 10px;
+    /*font-family: 'Pacifico', cursive;*/
+    font-size: 25px;
+    color: #FFF;
+    text-decoration: none;
+}
+
+.blue {
+    background-color: #3498DB;
+    border-bottom: 5px solid #2980B9;
+    text-shadow: 0px -2px #2980B9;
+}
+
+.action-button:active {
+    transform: translate(0px, 5px);
+    -webkit-transform: translate(0px, 5px);
+    border-bottom: 1px solid;
 }

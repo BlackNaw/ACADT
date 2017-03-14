@@ -55,15 +55,14 @@ public class Pagina implements IPagina {
     }
 
     public void getJs() throws SQLException {
+        this.body = this.body + "<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>\n" +
+                "    <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>";
         String sql = "SELECT a.NombreFicheroJs as js, a.Path as ruta, b.OrdenJs FROM `fichero_js` a, pagina_js b WHERE a.IdFicheroJs=b.IdFicheroJs AND b.IdPagina=" + this.idPagina + " order by 3";
         rs = conexion.executeQuery(sql);
         while (rs.next()) {
             this.body = this.body + "<script src='" + rs.getString("ruta") + "/" + rs.getString("js") + ".js'></script>";
         }
-        this.body = this.body + "<script src=\"https://code.jquery.com/jquery-1.12.0.min.js\"></script>\n" +
-                "<script>window.jQuery || document.write('<script src=\"path/to/jquery-1.12.0.js\"><\\/script>";
     }
-
 
     public void getHead() throws SQLException {
 

@@ -270,7 +270,7 @@ button,
 select {
     /* 1 */
     text-transform: none;
-    margin-left: 50%;
+    margin: auto;
 }
 
 /**
@@ -458,9 +458,9 @@ template {
     box-sizing: border-box;
 }
 
-html, body {
-    font-size: 16px;
-}
+/*html, body {*/
+    /*font-size: 16px;*/
+/*}*/
 
 body {
     background-color: #bfbfbf;
@@ -855,6 +855,12 @@ h1 {
     font-weight: normal;
     font-style: normal;
 }
+.seleccionCarr{
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
 
 [class^="icon-"], [class*=" icon-"] {
     /* use !important to prevent issues with browser extensions that change fonts */
@@ -870,7 +876,10 @@ h1 {
     -moz-osx-font-smoothing: grayscale;
 }
 
-@media (min-width: 600px) {
+@media screen and (min-width: 600px) {
+    html, body {
+        font-size: 16px;
+    }
     .barraHorizontal {
         width: 80%;
         height: 6em;
@@ -920,13 +929,6 @@ h1 {
         animation-name: animacion;
         animation-fill-mode: forwards;
         /* this prevents the animation from restarting! */
-    }
-
-    .seleccionCarr{
-        width: 100%;
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: space-between;
     }
 
     @-webkit-keyframes animacion {
@@ -1085,4 +1087,20 @@ h1 {
         border-radius: 3px;
     }
 
+}
+@media screen and (max-width: 900px){
+    .barraHorizontal{
+        width: 100%;
+        margin-bottom: 20%;
+        background-color: #bfbfbf;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        margin-left: 0;
+        margin-bottom: 0;
+        height: auto;
+    }
+    #carritoInfo{
+        display: none;
+    }
 }
